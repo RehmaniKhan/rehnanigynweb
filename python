@@ -1,0 +1,59 @@
+class Student:
+    def __init__(self, name, roll_number, age, marks):
+        self.name = name
+        self.roll_number = roll_number
+        self.age = age
+        self.marks = marks
+
+    def display_info(self):
+        print(f"Name: {self.name} | Roll: {self.roll_number} | Age: {self.age} | Marks: {self.marks}")
+
+    def update_marks(self, new_marks):
+        if 0 <= new_marks <= 100:
+            self.marks = new_marks
+            print("Marks updated successfully.")
+        else:
+            print("Invalid marks. Must be between 0 and 100.")
+
+    def get_grade(self):
+        if self.marks >= 90:
+            return "A"
+        elif self.marks >= 75:
+            return "B"
+        elif self.marks >= 60:
+            return "C"
+        elif self.marks >= 40:
+            return "D"
+        else:
+            return "F"
+
+
+# =================== TEST CASES ===================
+print("=" * 50)
+print("TESTING STUDENT MANAGEMENT SYSTEM")
+print("=" * 50)
+
+student1 = Student("Amit", 101, 19, 85.0)
+student2 = Student("Sneha", 102, 20, 92.5)
+student3 = Student("Rahul", 103, 21, 35.0)
+
+# Test all students
+students = [student1, student2, student3]
+
+for student in students:
+    student.display_info()
+    print(f"Grade: {student.get_grade()}")
+    print("-" * 50)
+
+# Test update_marks
+print("\nUpdating Amit's marks to 95...")
+student1.update_marks(95)
+student1.display_info()
+print(f"New Grade: {student1.get_grade()}")
+
+# Test invalid marks
+print("\nTrying invalid marks (-10)...")
+student1.update_marks(-10)
+
+print("\nTrying invalid marks (105)...")
+student1.update_marks(105)
